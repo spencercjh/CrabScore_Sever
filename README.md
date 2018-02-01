@@ -1,0 +1,2 @@
+# CrabScore_Sever
+中华绒螯蟹评比管理系统：一个基于android的螃蟹评分App服务端
