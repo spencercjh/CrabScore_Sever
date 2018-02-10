@@ -5222,6 +5222,22 @@
 		<servlet-class>servlet.company_part.QueryTasteScoreInfo</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>GenerateCrabFatness</servlet-name>
+		<servlet-class>servlet.generate_score_part.GenerateCrabFatness</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GenerateCrabFatnessScore</servlet-name>
+		<servlet-class>servlet.generate_score_part.GenerateCrabFatnessScore</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GenerateCrabQualityScore</servlet-name>
+		<servlet-class>servlet.generate_score_part.GenerateCrabQualityScore</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GenerateCrabTasteScore</servlet-name>
+		<servlet-class>servlet.generate_score_part.GenerateCrabTasteScore</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>QueryAllGroup</servlet-name>
 		<servlet-class>servlet.judge_part.QueryAllGroup</servlet-class>
 	</servlet>
@@ -5264,6 +5280,10 @@
 	<servlet>
 		<servlet-name>QueryGroupID</servlet-name>
 		<servlet-class>servlet.staff_part.QueryGroupID</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateCrabInfo</servlet-name>
+		<servlet-class>servlet.staff_part.UpdateCrabInfo</servlet-class>
 	</servlet>
 	<!-- servlet -->
 	<!-- servlet mapping -->
@@ -5392,6 +5412,22 @@
 		<url-pattern>/QueryTasteScoreInfo</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>GenerateCrabFatness</servlet-name>
+		<url-pattern>/GenerateCrabFatness</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GenerateCrabFatnessScore</servlet-name>
+		<url-pattern>/GenerateCrabFatnessScore</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GenerateCrabQualityScore</servlet-name>
+		<url-pattern>/GenerateCrabQualityScore</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GenerateCrabTasteScore</servlet-name>
+		<url-pattern>/GenerateCrabTasteScore</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>QueryAllGroup</servlet-name>
 		<url-pattern>/QueryAllGroup</url-pattern>
 	</servlet-mapping>
@@ -5434,6 +5470,10 @@
 	<servlet-mapping>
 		<servlet-name>QueryGroupID</servlet-name>
 		<url-pattern>/QueryGroupID</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateCrabInfo</servlet-name>
+		<url-pattern>/UpdateCrabInfo</url-pattern>
 	</servlet-mapping>
 	<!-- servlet mapping -->
 	<resource-ref>
