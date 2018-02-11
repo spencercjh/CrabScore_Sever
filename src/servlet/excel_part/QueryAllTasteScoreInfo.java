@@ -1,4 +1,4 @@
-package servlet.company_part;
+package servlet.excel_part;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,16 +19,16 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
- * Servlet implementation class QueryTasteScoreInfo
+ * Servlet implementation class QueryAllTasteScoreInfo
  */
-@WebServlet("/QueryTasteScoreInfo")
-public class QueryTasteScoreInfo extends HttpServlet {
+@WebServlet("/QueryAllTasteScoreInfo")
+public class QueryAllTasteScoreInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public QueryTasteScoreInfo() {
+	public QueryAllTasteScoreInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -52,16 +52,9 @@ public class QueryTasteScoreInfo extends HttpServlet {
 		// TODO Auto-generated method stub
 		String str_competition_id = request.getParameter("competition_id");
 		int competition_id = Integer.parseInt(str_competition_id);
-		String str_group_id = request.getParameter("group_id");
-		int group_id = Integer.parseInt(str_group_id);
-		String str_crab_sex = request.getParameter("crab_sex");
-		int crab_sex = Integer.parseInt(str_crab_sex);
-		System.out.println("小组id：	" + group_id);
-		System.out.println("螃蟹性别：	" + crab_sex);
 		System.out.println("比赛id：	" + competition_id);
 		PrintWriter out = response.getWriter();
-		String query_sql = "select * from rxpb_score_taste where competition_id =" + competition_id + "and group_id="
-				+ group_id + "and crab_sex=" + crab_sex;
+		String query_sql = "select * from rxpb_score_taste where competition_id =" + competition_id;
 		try {
 			// 连接数据库
 			java.sql.Connection conn = DriverManager.getConnection(DataBase.JDBC, DataBase.database_user_id,

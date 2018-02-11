@@ -1,4 +1,4 @@
-package servlet.company_part;
+package servlet.excel_part;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,16 +19,16 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
- * Servlet implementation class QueryTasteScoreInfo
+ * Servlet implementation class QueryAllQualityScoreInfo
  */
-@WebServlet("/QueryTasteScoreInfo")
-public class QueryTasteScoreInfo extends HttpServlet {
+@WebServlet("/QueryAllQualityScoreInfo")
+public class QueryAllQualityScoreInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public QueryTasteScoreInfo() {
+	public QueryAllQualityScoreInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -52,16 +52,9 @@ public class QueryTasteScoreInfo extends HttpServlet {
 		// TODO Auto-generated method stub
 		String str_competition_id = request.getParameter("competition_id");
 		int competition_id = Integer.parseInt(str_competition_id);
-		String str_group_id = request.getParameter("group_id");
-		int group_id = Integer.parseInt(str_group_id);
-		String str_crab_sex = request.getParameter("crab_sex");
-		int crab_sex = Integer.parseInt(str_crab_sex);
-		System.out.println("小组id：	" + group_id);
-		System.out.println("螃蟹性别：	" + crab_sex);
 		System.out.println("比赛id：	" + competition_id);
 		PrintWriter out = response.getWriter();
-		String query_sql = "select * from rxpb_score_taste where competition_id =" + competition_id + "and group_id="
-				+ group_id + "and crab_sex=" + crab_sex;
+		String query_sql = "select * from rxpb_score_quality where competition_id =" + competition_id;
 		try {
 			// 连接数据库
 			java.sql.Connection conn = DriverManager.getConnection(DataBase.JDBC, DataBase.database_user_id,
@@ -79,25 +72,23 @@ public class QueryTasteScoreInfo extends HttpServlet {
 				jsonobj.put("crab_sex", resultset.getInt("crab_sex"));
 				jsonobj.put("competition_id", resultset.getInt("competition_id"));
 				jsonobj.put("score_fin", resultset.getFloat("score_fin"));
-				jsonobj.put("score_ygys", resultset.getFloat("score_ygys"));
-				jsonobj.put("score_sys", resultset.getFloat("score_sys"));
-				jsonobj.put("score_ghys", resultset.getFloat("score_ghys"));
-				jsonobj.put("score_xwxw", resultset.getFloat("score_xwxw"));
-				jsonobj.put("score_gh", resultset.getFloat("score_gh"));
-				jsonobj.put("score_fbjr", resultset.getFloat("score_fbjr"));
-				jsonobj.put("score_bzjr", resultset.getFloat("score_bzjr"));
+				jsonobj.put("score_bts", resultset.getFloat("score_bts"));
+				jsonobj.put("score_fts", resultset.getFloat("score_fts"));
+				jsonobj.put("score_ec", resultset.getFloat("score_ec"));
+				jsonobj.put("score_dscc", resultset.getFloat("score_dscc"));
+				jsonobj.put("score_bbyzt", resultset.getFloat("score_bbyzt"));
 				jsonarray.add(jsonobj);
 			}
 			// 输出结果
-			System.out.println("taste score:" + jsonarray);
+			System.out.println("quality score info:" + jsonarray);
 			out.println(URLEncoder.encode(jsonarray.toString(), "UTF-8"));
 			// 关闭连接
 			resultset.close();
 			conn.close();
 			statement.close();
 		} catch (SQLException se) {
-			System.out.println("query taste score failed");
-			out.println("query taste score failed");
+			System.out.println("query quality score failed");
+			out.println("query quality score failed");
 			System.out.println("SQLException: " + se.getMessage());
 		}
 	}

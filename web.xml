@@ -5222,6 +5222,18 @@
 		<servlet-class>servlet.company_part.QueryTasteScoreInfo</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>QueryAllCrabList</servlet-name>
+		<servlet-class>servlet.excel_part.QueryAllCrabList</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>QueryAllQualityScoreInfo</servlet-name>
+		<servlet-class>servlet.excel_part.QueryAllQualityScoreInfo</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>QueryAllTasteScoreInfo</servlet-name>
+		<servlet-class>servlet.excel_part.QueryAllTasteScoreInfo</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>GenerateCrabFatness</servlet-name>
 		<servlet-class>servlet.generate_score_part.GenerateCrabFatness</servlet-class>
 	</servlet>
@@ -5410,6 +5422,18 @@
 	<servlet-mapping>
 		<servlet-name>QueryTasteScoreInfo</servlet-name>
 		<url-pattern>/QueryTasteScoreInfo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>QueryAllCrabList</servlet-name>
+		<url-pattern>/QueryAllCrabList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>QueryAllQualityScoreInfo</servlet-name>
+		<url-pattern>/QueryAllQualityScoreInfo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>QueryAllTasteScoreInfo</servlet-name>
+		<url-pattern>/QueryAllTasteScoreInfo</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GenerateCrabFatness</servlet-name>
