@@ -53,8 +53,8 @@ public class UpdateUserStatus extends HttpServlet {
 		System.out.println("用户名:	" + user_name);
 		System.out.println("更新用户名：	" + update_user);
 		PrintWriter out = response.getWriter();
-		String update_sql = "UPDATE rxpb_competition_config SET status=" + status + ",update_user='" + update_user
-				+ "',update_date='" + DataBase.GetPresentTime() + "' WHERE user_name=" + user_name;
+		String update_sql = "UPDATE rxpb_user_info SET status=" + status + ",update_user='" + update_user
+				+ "',update_date='" + DataBase.GetPresentTime() + "' WHERE user_name='" + user_name + "'";
 		try {
 			// 连接数据库
 			java.sql.Connection conn = DriverManager.getConnection(DataBase.JDBC, DataBase.database_user_id,

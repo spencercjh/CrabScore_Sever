@@ -71,6 +71,7 @@ public class QueryUserProperty_Common extends HttpServlet {
 				// 通过字段检索
 				jsonobj.put("user_name", resultset.getString("user_name"));
 				jsonobj.put("display_name", resultset.getString("display_name"));
+				jsonobj.put("password", resultset.getString("password"));
 				jsonobj.put("role_id", resultset.getInt("role_id"));
 				jsonobj.put("status", resultset.getInt("status"));
 				jsonobj.put("email", resultset.getString("email"));

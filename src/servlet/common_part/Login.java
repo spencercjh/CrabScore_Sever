@@ -68,8 +68,8 @@ public class Login extends HttpServlet {
 			String result_password = "";
 			int result_role_id = -1;
 			if (resultset.next()) {
-				result_id = resultset.getString("student_id");
-				result_password = resultset.getString("student_password");
+				result_id = resultset.getString("user_name");
+				result_password = resultset.getString("password");
 				result_role_id = resultset.getInt("role_id");
 			}
 			// 输出结果

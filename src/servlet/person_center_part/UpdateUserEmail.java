@@ -21,19 +21,21 @@ import database.DataBase;
 @WebServlet("/UpdateUserEmail")
 public class UpdateUserEmail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UpdateUserEmail() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public UpdateUserEmail() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
@@ -48,8 +50,10 @@ public class UpdateUserEmail extends HttpServlet {
 		String update_user = request.getParameter("update_user");
 		String user_name = request.getParameter("user_name");
 		String password = request.getParameter("password");
-		String email =request.getParameter("email");
+		String email = request.getParameter("email");
 		System.out.println("用户名:	" + user_name);
+		System.out.println("密码：	" + password);
+		System.out.println("邮箱：	" + email);
 		PrintWriter out = response.getWriter();
 		String update_sql = "UPDATE rxpb_user_info SET email='" + email + "',update_user='" + update_user
 				+ "',update_date='" + DataBase.GetPresentTime() + "' WHERE user_name='" + user_name + "'and password='"
