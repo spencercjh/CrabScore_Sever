@@ -56,8 +56,9 @@ public class GenerateCrabFatness extends HttpServlet {
 		System.out.println("螃蟹肥满度参数:	" + var_fatness);
 		PrintWriter out = response.getWriter();
 		String update_sql = "UPDATE rxpb_crab_info SET crab_fatness=" + var_fatness
-				+ "*crab_weight*100.0/(crab_length*crab_length*crab_length)," + update_user + "',update_date='"
-				+ DataBase.GetPresentTime() + "' WHERE crab_sex=" + crab_sex + "and competition_id=" + competition_id;
+				+ "*crab_weight*100.0/(crab_length*crab_length*crab_length),update_user='" + update_user + "',update_date='"
+				+ DataBase.GetPresentTime() + "' WHERE crab_sex=" + crab_sex + " and competition_id=" + competition_id;
+		System.out.println(update_sql);
 		try {
 			// 连接数据库
 			java.sql.Connection conn = DriverManager.getConnection(DataBase.JDBC, DataBase.database_user_id,

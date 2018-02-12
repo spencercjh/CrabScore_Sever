@@ -60,8 +60,9 @@ public class QueryTasteScoreInfo extends HttpServlet {
 		System.out.println("螃蟹性别：	" + crab_sex);
 		System.out.println("比赛id：	" + competition_id);
 		PrintWriter out = response.getWriter();
-		String query_sql = "select * from rxpb_score_taste where competition_id =" + competition_id + "and group_id="
-				+ group_id + "and crab_sex=" + crab_sex;
+		String query_sql = "select * from rxpb_score_taste where competition_id =" + competition_id + " and group_id="
+				+ group_id + " and crab_sex=" + crab_sex;
+//		System.out.println(query_sql);
 		try {
 			// 连接数据库
 			java.sql.Connection conn = DriverManager.getConnection(DataBase.JDBC, DataBase.database_user_id,

@@ -92,27 +92,31 @@ public class GenerateCrabFatnessScore extends HttpServlet {
 			}
 			standard_deviation_fatness = (float) Math.sqrt(standard_deviation_fatness / count);
 			standard_deviation_weight = (float) Math.sqrt(standard_deviation_weight / count);
+			statement.close();
+			// 连接数据库
+			Statement statement2 = conn.createStatement(); // 创建Statement对象
 			String update_sql = "";
 			if (crab_sex == 0) {
 				update_sql = "UPDATE rxpb_group_info SET fatness_score_f=" // 雌蟹肥满度评分
 						+ String.valueOf(average_fatness + var_weight * average_weight
 								- var_fatness_sd * standard_deviation_fatness - var_weight * standard_deviation_weight)
 						+ ",update_user='" + update_user + "',update_date='" + DataBase.GetPresentTime()
-						+ "' WHERE group_id=" + group_id + "and competition_id=" + competition_id;
+						+ "' WHERE group_id=" + group_id + " and competition_id=" + competition_id;
 			} else if (crab_sex == 1) {
 				update_sql = "UPDATE rxpb_group_info SET fatness_score_m=" // 雄蟹肥满度评分
 						+ String.valueOf(average_fatness + var_weight * average_weight
 								- var_fatness_sd * standard_deviation_fatness - var_weight * standard_deviation_weight)
 						+ ",update_user='" + update_user + "',update_date='" + DataBase.GetPresentTime()
-						+ "' WHERE group_id=" + group_id + "and competition_id=" + competition_id;
+						+ "' WHERE group_id=" + group_id + " and competition_id=" + competition_id;
 			}
+			System.out.println(update_sql);
 			// 执行update语句
-			statement.executeUpdate(update_sql);
+			statement2.executeUpdate(update_sql);
 			System.out.println("update group fatness score success");
 			out.println("update group fatness score success");
 			// 关闭连接
 			conn.close();
-			statement.close();
+			statement2.close();
 		} catch (SQLException se) {
 			System.out.println("update group fatness score failed");
 			out.println("update group fatness score failed");

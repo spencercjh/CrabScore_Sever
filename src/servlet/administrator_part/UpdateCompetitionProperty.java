@@ -84,6 +84,7 @@ public class UpdateCompetitionProperty extends HttpServlet {
 				+ var_fweight_sd + ",result_fatness=" + result_fatness + ",result_quality=" + result_quality
 				+ ",result_taste=" + result_taste + ",note='" + note + "',update_user='" + update_user
 				+ "',update_date='" + DataBase.GetPresentTime() + "' WHERE competition_id=" + competition_id;
+		System.out.println(update_sql);
 		try {
 			// 连接数据库
 			java.sql.Connection conn = DriverManager.getConnection(DataBase.JDBC, DataBase.database_user_id,

@@ -57,8 +57,9 @@ public class QueryOneCompanyAllGroup extends HttpServlet {
 		System.out.println("参选单位id：	" + company_id);
 		System.out.println("比赛id：	" + competition_id);
 		PrintWriter out = response.getWriter();
-		String query_sql = "select * from rxpb_group_info where company_id =" + company_id + "and competition_id="
+		String query_sql = "select * from rxpb_group_info where company_id =" + company_id + " and competition_id="
 				+ competition_id;
+		System.out.println(query_sql);
 		try {
 			// 连接数据库
 			java.sql.Connection conn = DriverManager.getConnection(DataBase.JDBC, DataBase.database_user_id,

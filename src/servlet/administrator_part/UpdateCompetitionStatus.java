@@ -56,6 +56,7 @@ public class UpdateCompetitionStatus extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String update_sql = "UPDATE rxpb_competition_config SET status=" + status + ",update_user='" + update_user
 				+ "',update_date='" + DataBase.GetPresentTime() + "' WHERE competition_id=" + competition_id;
+		System.out.println(update_sql);
 		try {
 			// 连接数据库
 			java.sql.Connection conn = DriverManager.getConnection(DataBase.JDBC, DataBase.database_user_id,

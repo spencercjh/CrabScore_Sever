@@ -82,23 +82,26 @@ public class GenerateCrabQualityScore extends HttpServlet {
 				sum_score = sum_score - max_score - min_score;
 			}
 			float average_score = sum_score / count;
+			statement.close();
+			Statement statement2 = conn.createStatement(); // 创建Statement对象
 			String update_sql = "";
 			if (crab_sex == 0) {
 				update_sql = "UPDATE rxpb_group_info SET quality_score_f=" // 雌蟹种质评分
 						+ average_score + ",update_user='" + update_user + "',update_date='" + DataBase.GetPresentTime()
-						+ "' WHERE group_id=" + group_id + "and competition_id=" + competition_id;
+						+ "' WHERE group_id=" + group_id + " and competition_id=" + competition_id;
 			} else if (crab_sex == 1) {
 				update_sql = "UPDATE rxpb_group_info SET quality_score_m=" // 雄蟹种质评分
 						+ average_score + ",update_user='" + update_user + "',update_date='" + DataBase.GetPresentTime()
-						+ "' WHERE group_id=" + group_id + "and competition_id=" + competition_id;
+						+ "' WHERE group_id=" + group_id + " and competition_id=" + competition_id;
 			}
+			System.out.println(update_sql);
 			// 执行update语句
-			statement.executeUpdate(update_sql);
+			statement2.executeUpdate(update_sql);
 			System.out.println("update group quality score success");
 			out.println("update group quality score success");
 			// 关闭连接
 			conn.close();
-			statement.close();
+			statement2.close();
 		} catch (SQLException se) {
 			System.out.println("update group quality score failed");
 			out.println("update group quality score failed");

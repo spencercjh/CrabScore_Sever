@@ -5250,8 +5250,20 @@
 		<servlet-class>servlet.generate_score_part.GenerateCrabTasteScore</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>InsertQualityScoreInfo</servlet-name>
+		<servlet-class>servlet.judge_part.InsertQualityScoreInfo</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>InsertTasteScoreInfo</servlet-name>
+		<servlet-class>servlet.judge_part.InsertTasteScoreInfo</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>QueryAllGroup</servlet-name>
 		<servlet-class>servlet.judge_part.QueryAllGroup</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>QueryUserID</servlet-name>
+		<servlet-class>servlet.judge_part.QueryUserID</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>UpdateQualityScoreInfo</servlet-name>
@@ -5452,8 +5464,20 @@
 		<url-pattern>/GenerateCrabTasteScore</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>InsertQualityScoreInfo</servlet-name>
+		<url-pattern>/InsertQualityScoreInfo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>InsertTasteScoreInfo</servlet-name>
+		<url-pattern>/InsertTasteScoreInfo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>QueryAllGroup</servlet-name>
 		<url-pattern>/QueryAllGroup</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>QueryUserID</servlet-name>
+		<url-pattern>/QueryUserID</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>UpdateQualityScoreInfo</servlet-name>

@@ -1,9 +1,7 @@
-package servlet.administrator_part;
+package servlet.judge_part;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,16 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 import database.DataBase;
 
 /**
- * Servlet implementation class QueryCompanyID
+ * Servlet implementation class QueryUserID
  */
-@WebServlet("/QueryCompanyID")
-public class QueryCompanyID extends HttpServlet {
+@WebServlet("/QueryUserID")
+public class QueryUserID extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public QueryCompanyID() {
+	public QueryUserID() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -49,14 +47,9 @@ public class QueryCompanyID extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String company_name = URLDecoder.decode(request.getParameter("company_name"), "utf-8");
-		String str_comtetition_id = request.getParameter("competition_id");
-		int competition_id = Integer.parseInt(str_comtetition_id);
-		System.out.println("参选单位名:	" + company_name);
-		System.out.println("比赛ID:	" + competition_id);
+		String user_name = request.getParameter("user_name");
 		PrintWriter out = response.getWriter();
-		String query_sql = "select company_id from rxpb_company_info where company_name='" + company_name
-				+ "'and competition_id=" + competition_id;
+		String query_sql = "select user_id from rxpb_user_info where user_name='" + user_name + "'";
 		try {
 			// 连接数据库
 			java.sql.Connection conn = DriverManager.getConnection(DataBase.JDBC, DataBase.database_user_id,
@@ -64,20 +57,22 @@ public class QueryCompanyID extends HttpServlet {
 			Statement statement = conn.createStatement(); // 创建Statement对象
 			// 执行SQL语句，获取结果
 			ResultSet resultset = statement.executeQuery(query_sql);
-			int company_id = -1;
-			if (resultset.next()) {
-				company_id = resultset.getInt("company_id");
+			// 展开结果集数据库
+			int user_id = -1;
+			while (resultset.next()) {
+				// 通过字段检索
+				user_id = resultset.getInt("user_id");
 			}
 			// 输出结果
-			System.out.println("company_id:" + company_id);
-			out.println(URLEncoder.encode(String.valueOf(company_id), "UTF-8"));
+			System.out.println("user_id :" + user_id);
+			out.println(user_id);
 			// 关闭连接
 			resultset.close();
 			conn.close();
 			statement.close();
 		} catch (SQLException se) {
-			System.out.println("query company id failed");
-			out.println("query company id failed");
+			System.out.println("query user id failed");
+			out.println("query user id failed");
 			System.out.println("SQLException: " + se.getMessage());
 		}
 	}
